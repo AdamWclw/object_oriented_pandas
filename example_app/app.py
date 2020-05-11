@@ -7,7 +7,7 @@ from object_oriented_pandas import data_type
 track_df = pd.read_pickle('track_df.pkl')
 
 # get data types
-# track_raw_dt = track_df.dtypes
+track_raw_dt = track_df.dtypes
 
 # create track object
 track_obj = Track(df=track_df)
@@ -35,6 +35,9 @@ track_obj.set_idx()
 
 # convert to conventional unit
 track_obj.convert_to_con()
+
+# convert to SI unit
+track_obj.convert_to_si()
 
 # convert distance column to SI unit
 track_obj.convert_to_con(col_obj=track_obj.DISTANCE)

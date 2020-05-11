@@ -73,7 +73,7 @@ class DataFrame:
             for col_obj in self._cols:
                 if col_obj.get_data_unit() is not None:
                     if not col_obj.is_data_unit_si():
-                        col_obj._si = True
+                        col_obj._is_data_unit_si = True
                         self.df[col_obj.get_name()] *= col_obj.get_data_unit().get_con_2_si()
                         col_obj._default_value *= col_obj.get_data_unit().get_con_2_si()
         else:
@@ -88,8 +88,9 @@ class DataFrame:
         if col_obj is None:
             for col_obj in self._cols:
                 if col_obj.get_data_unit() is not None:
+                    t = col_obj.is_data_unit_si()
                     if col_obj.is_data_unit_si():
-                        col_obj._si = False
+                        col_obj._is_data_unit_si = False
                         self.df[col_obj.get_name()] /= col_obj.get_data_unit().get_con_2_si()
                         col_obj._default_value /= col_obj.get_data_unit().get_con_2_si()
         else:
